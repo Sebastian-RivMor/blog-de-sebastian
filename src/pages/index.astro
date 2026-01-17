@@ -1,11 +1,133 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import SkillBadge from "../components/SkillBadge.astro";
+import ProjectCard from "../components/ProjectCard.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const skills = [
+  "JavaScript",
+  "TypeScript",
+  "React",
+  "Astro",
+  "Tailwind CSS",
+  "Node.js",
+  "Python",
+  "SQL",
+];
+
+const projects = [
+  {
+    title: "E-Commerce Platform",
+    description:
+      "A full-featured online store built with Next.js and Stripe integration. Features include real-time inventory and secure design.",
+    tags: ["Next.js", "Stripe", "Tailwind"],
+    image:
+      "https://images.unsplash.com/photo-1557821552-17105176677c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+  },
+  {
+    title: "Task Management App",
+    description:
+      "Productivity tool for teams with real-time updates and collaborative features using WebSocket technology.",
+    tags: ["React", "Node.js", "Socket.io"],
+    image:
+      "https://images.unsplash.com/photo-1540350394557-8d14678e7f91?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+  },
+  {
+    title: "Weather Dashboard",
+    description:
+      "Minimalist weather tracking application with historical data visualization and location-based forecasts.",
+    tags: ["Mobile", "API Integration", "Charts"],
+    image:
+      "https://images.unsplash.com/photo-1592210454359-9043f067919b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+  },
+];
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Sebastián | Programador & Desarrollador">
+  <Navbar />
+
+  <main class="flex-grow">
+    <!-- Hero Section -->
+    <section
+      class="min-h-[80vh] flex flex-col justify-center items-center text-center px-4 relative overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-br from-blue-gloomy/30 to-black-deep -z-10"
+      >
+      </div>
+      <div
+        class="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-cyan-electric shadow-[0_0_20px_rgba(0,210,225,0.3)] mb-8"
+      >
+        <img
+          src="/images/perfil.webp"
+          alt="Sebastián"
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <h1 class="text-5xl md:text-7xl font-bold mb-4 tracking-tight">
+        <span
+          class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-electric to-orange-fire"
+        >
+          Sebastian Rivera
+        </span>
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-400 max-w-2xl mb-8">
+        Programador & Creativo Digital
+      </p>
+      <div class="flex gap-4">
+        <a
+          href="#projects"
+          class="px-8 py-3 bg-cyan-electric text-black-deep font-bold rounded-full hover:bg-white transition-colors duration-300"
+        >
+          Ver Proyectos
+        </a>
+        <a
+          href="/blog"
+          class="px-8 py-3 border border-orange-fire text-orange-fire font-bold rounded-full hover:bg-orange-fire hover:text-white transition-colors duration-300"
+        >
+          Leer Blog
+        </a>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-20 px-8 bg-gray-leather/30">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-8 text-white">Sobre Mí</h2>
+        <p class="text-gray-300 text-lg leading-relaxed mb-8">
+          Compartir quién soy y lo que enseño es justo donde estoy en mi mejor
+          momento. He estado en ambos lados de la ecuación, aprendiendo y
+          enseñando para ofrecer resultados útiles. Quiero llevar lo que he
+          aprendido y demostrado hacia un futuro brillante.
+        </p>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="py-20 px-8 bg-black-deep relative">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-white">
+          Tecnologías & Skills
+        </h2>
+        <div class="flex flex-wrap justify-center gap-4">
+          {skills.map((skill) => <SkillBadge name={skill} />)}
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-8 bg-gray-leather/30">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-white">
+          Proyectos Realizados
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project) => <ProjectCard {...project} />)}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
 </Layout>

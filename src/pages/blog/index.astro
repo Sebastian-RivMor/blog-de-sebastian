@@ -1,0 +1,45 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+
+const posts = [
+  {
+    title: "Bienvenido a mi nuevo blog",
+    date: "17 Ene 2026",
+    excerpt: "Este es el comienzo de un nuevo espacio donde compartiré mis conocimientos sobre desarrollo web.",
+    slug: "bienvenido"
+  }
+];
+---
+
+<Layout title="Blog | Sebastián">
+	<Navbar />
+	
+	<main class="flex-grow pt-20 px-8 min-h-screen">
+		<div class="max-w-4xl mx-auto">
+			<h1 class="text-4xl md:text-5xl font-bold mb-4 text-white">Blog</h1>
+			<p class="text-gray-400 mb-12 text-lg">Pensamientos, tutoriales y actualizaciones.</p>
+
+			<div class="grid gap-8">
+				{posts.map(post => (
+					<article class="p-8 rounded-2xl bg-gray-leather border border-gray-700/50 hover:border-cyan-electric/50 transition-all duration-300 group">
+						<span class="text-sm text-cyan-electric mb-2 block">{post.date}</span>
+						<h2 class="text-2xl font-bold mb-3 text-white group-hover:text-cyan-electric transition-colors">{post.title}</h2>
+						<p class="text-gray-400 leading-relaxed mb-4">{post.excerpt}</p>
+						<a href="#" class="text-orange-fire font-medium hover:text-white transition-colors inline-flex items-center gap-1">
+							Leer más 
+							<span class="text-xl">→</span>
+						</a>
+					</article>
+				))}
+			</div>
+
+            <div class="mt-16 p-8 rounded-2xl bg-blue-gloomy/20 border border-blue-gloomy border-dashed text-center">
+                <p class="text-gray-400">Próximamente: Integración con Telegram para nuevo contenido.</p>
+            </div>
+		</div>
+	</main>
+
+	<Footer />
+</Layout>
