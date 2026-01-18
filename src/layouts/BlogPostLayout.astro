@@ -1,0 +1,60 @@
+---
+import Layout from './Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+	title: string;
+	description: string;
+	pubDate: Date;
+	updatedDate?: Date;
+	heroImage?: string;
+}
+
+const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+
+// Format date
+const formattedDate = pubDate.toLocaleDateString('es-ES', {
+	year: 'numeric',
+	month: 'long',
+	day: 'numeric',
+});
+---
+
+<Layout title={title}>
+	<Navbar />
+	
+	<main class="flex-grow pt-24 px-8 min-h-screen">
+		<article class="max-w-3xl mx-auto">
+			<div class="mb-8 text-center">
+				<div class="text-cyan-electric font-medium mb-2">
+					{formattedDate}
+				</div>
+				<h1 class="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
+					{title}
+				</h1>
+				<p class="text-xl text-gray-400 max-w-2xl mx-auto">
+					{description}
+				</p>
+			</div>
+
+			{heroImage && (
+				<div class="mb-10 rounded-2xl overflow-hidden border border-gray-700/50 shadow-2xl">
+					<img width={1020} height={510} src={heroImage} alt="" class="w-full object-cover" />
+				</div>
+			)}
+
+			<div class="prose prose-invert prose-lg max-w-none prose-headings:text-white prose-a:text-cyan-electric hover:prose-a:text-white prose-strong:text-white prose-code:text-orange-fire prose-pre:bg-gray-900 prose-pre:border prose-pre:border-gray-700">
+				<slot />
+			</div>
+		</article>
+
+		<div class="max-w-3xl mx-auto mt-16 pt-8 border-t border-gray-800 text-center">
+			<a href="/blog" class="inline-flex items-center text-cyan-electric hover:text-white transition-colors">
+				<span class="mr-2">←</span> Volver al Blog
+			</a>
+		</div>
+	</main>
+
+	<Footer />
+</Layout>

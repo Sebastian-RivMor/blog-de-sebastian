@@ -2,18 +2,14 @@
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
 
-const posts = [
-  {
-    title: "Bienvenido a mi nuevo blog",
-    date: "17 Ene 2026",
-    excerpt: "Este es el comienzo de un nuevo espacio donde compartiré mis conocimientos sobre desarrollo web.",
-    slug: "bienvenido"
-  }
-];
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
 ---
 
-<Layout title="Blog | Sebastián">
+<Layout title="Blog | Sebastian">
 	<Navbar />
 	
 	<main class="flex-grow pt-20 px-8 min-h-screen">
@@ -24,10 +20,20 @@ const posts = [
 			<div class="grid gap-8">
 				{posts.map(post => (
 					<article class="p-8 rounded-2xl bg-gray-leather border border-gray-700/50 hover:border-cyan-electric/50 transition-all duration-300 group">
-						<span class="text-sm text-cyan-electric mb-2 block">{post.date}</span>
-						<h2 class="text-2xl font-bold mb-3 text-white group-hover:text-cyan-electric transition-colors">{post.title}</h2>
-						<p class="text-gray-400 leading-relaxed mb-4">{post.excerpt}</p>
-						<a href="#" class="text-orange-fire font-medium hover:text-white transition-colors inline-flex items-center gap-1">
+						<span class="text-sm text-cyan-electric mb-2 block">
+							{post.data.pubDate.toLocaleDateString('es-ES', {
+								year: 'numeric',
+								month: 'long',
+								day: 'numeric',
+							})}
+						</span>
+						<h2 class="text-2xl font-bold mb-3 text-white group-hover:text-cyan-electric transition-colors">
+							<a href={`/blog/${post.id}`} class="block">
+								{post.data.title}
+							</a>
+						</h2>
+						<p class="text-gray-400 leading-relaxed mb-4">{post.data.description}</p>
+						<a href={`/blog/${post.id}`} class="text-orange-fire font-medium hover:text-white transition-colors inline-flex items-center gap-1">
 							Leer más 
 							<span class="text-xl">→</span>
 						</a>
