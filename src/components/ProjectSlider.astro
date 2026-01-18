@@ -1,0 +1,57 @@
+---
+interface Props {
+    projects: {
+        title: string;
+        language: string;
+        url: string;
+    }[];
+}
+
+const { projects } = Astro.props;
+// Duplicate projects to create seamless infinite scroll effect
+const allProjects = [...projects, ...projects];
+---
+
+<div class="relative w-full overflow-hidden mask-gradient">
+    <div class="flex gap-8 w-max animate-scroll py-8">
+        {
+            allProjects.map((project) => (
+                <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="block w-80 p-6 rounded-xl bg-gray-leather/50 border border-white/5 hover:border-cyan-electric/50 transition-all duration-300 hover:scale-[1.02] hover:bg-gray-leather group"
+                >
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-2 rounded bg-black-deep/50 text-cyan-electric">
+                            <i class="devicon-github-original text-2xl" />
+                        </div>
+                        <h3 class="font-bold text-lg text-white group-hover:text-cyan-electric transition-colors truncate">
+                            {project.title}
+                        </h3>
+                    </div>
+                    <div class="flex items-center gap-2 mt-auto">
+                        <span class="text-xs text-gray-400 uppercase tracking-wider font-medium">
+                            Lenguaje:
+                        </span>
+                        <span class="text-xs px-2 py-1 bg-black-deep/60 rounded text-orange-fire font-bold">
+                            {project.language}
+                        </span>
+                    </div>
+                </a>
+            ))
+        }
+    </div>
+</div>
+
+<style>
+    .mask-gradient {
+        mask-image: linear-gradient(
+            to right,
+            transparent,
+            black 10%,
+            black 90%,
+            transparent
+        );
+    }
+</style>
