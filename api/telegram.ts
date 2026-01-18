@@ -58,7 +58,7 @@ pubDate: "${pubDate}"
 async function generatePost(topic: string): Promise<string> {
   if (!GEMINI_API_KEY) throw new Error("La API Key de Gemini no está configurada.");
   
-  const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+  const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
   const prompt = `Eres un talentoso escritor de blogs de tecnología. Escribe un post atractivo y bien estructurado sobre el siguiente tema: "${topic}". El post debe estar en formato Markdown, listo para ser publicado. Debe incluir:
   - Un título creativo y llamativo como H1 (ej: '# Título').
   - Una introducción que enganche.
