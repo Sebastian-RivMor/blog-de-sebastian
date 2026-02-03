@@ -85,7 +85,7 @@ async function commitPostToGitHub(topic: string, markdownContent: string): Promi
     path: filePath,
     message: `feat(blog): Nuevo post generado por IA: ${title}`,
     content: Buffer.from(content).toString('base64'),
-    branch: 'main', // O la rama principal que uses
+    branch: 'master', // O la rama principal que uses
   });
 
   return response.data.content?.html_url || '';
