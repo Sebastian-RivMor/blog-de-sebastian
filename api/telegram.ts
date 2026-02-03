@@ -33,32 +33,32 @@ function slugify(text: string): string {
 }
 
 function formatPost(markdownContent: string): { title: string, content: string } {
-    // Extrae el título del H1 de Markdown
-    const titleMatch = markdownContent.match(/^#\s+(.*)/);
-    const title = titleMatch ? titleMatch[1] : 'Nuevo Post';
-    
-    const today = new Date();
-    const pubDate = today.toISOString();
-    const description = markdownContent.substring(0, 160).replace(/\n/g, ' ');
+  // Extrae el título del H1 de Markdown
+  const titleMatch = markdownContent.match(/^#\s+(.*)/);
+  const title = titleMatch ? titleMatch[1] : 'Nuevo Post';
 
-    const frontmatter = `---
+  const today = new Date();
+  const pubDate = today.toISOString();
+  const description = markdownContent.substring(0, 160).replace(/\n/g, ' ');
+
+  const frontmatter = `---
 title: "${title.replace(/"/g, '\\"')}"
 description: "${description.replace(/"/g, '\\"')}"
 pubDate: "${pubDate}"
 ---
 `;
-    
-    return {
-        title,
-        content: frontmatter + '\n' + markdownContent
-    };
+
+  return {
+    title,
+    content: frontmatter + '\n' + markdownContent
+  };
 }
 
 // --- Lógica Principal ---
 async function generatePost(topic: string): Promise<string> {
   if (!GEMINI_API_KEY) throw new Error("La API Key de Gemini no está configurada.");
-  
-  const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+
+  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash-latest" });
   const prompt = `Eres un talentoso escritor de blogs de tecnología. Escribe un post atractivo y bien estructurado sobre el siguiente tema: "${topic}". El post debe estar en formato Markdown, listo para ser publicado. Debe incluir:
   - Un título creativo y llamativo como H1 (ej: '# Título').
   - Una introducción que enganche.
@@ -71,24 +71,24 @@ async function generatePost(topic: string): Promise<string> {
 }
 
 async function commitPostToGitHub(topic: string, markdownContent: string): Promise<string> {
-    if (!GITHUB_TOKEN || !GITHUB_REPO_OWNER || !GITHUB_REPO_NAME) {
-        throw new Error("Las variables de entorno de GitHub no están configuradas.");
-    }
+  if (!GITHUB_TOKEN || !GITHUB_REPO_OWNER || !GITHUB_REPO_NAME) {
+    throw new Error("Las variables de entorno de GitHub no están configuradas.");
+  }
 
-    const { title, content } = formatPost(markdownContent);
-    const fileName = `${slugify(title)}.md`;
-    const filePath = `src/content/blog/${fileName}`;
+  const { title, content } = formatPost(markdownContent);
+  const fileName = `${slugify(title)}.md`;
+  const filePath = `src/content/blog/${fileName}`;
 
-    const response = await octokit.repos.createOrUpdateFileContents({
-        owner: GITHUB_REPO_OWNER,
-        repo: GITHUB_REPO_NAME,
-        path: filePath,
-        message: `feat(blog): Nuevo post generado por IA: ${title}`,
-        content: Buffer.from(content).toString('base64'),
-        branch: 'main', // O la rama principal que uses
-    });
+  const response = await octokit.repos.createOrUpdateFileContents({
+    owner: GITHUB_REPO_OWNER,
+    repo: GITHUB_REPO_NAME,
+    path: filePath,
+    message: `feat(blog): Nuevo post generado por IA: ${title}`,
+    content: Buffer.from(content).toString('base64'),
+    branch: 'main', // O la rama principal que uses
+  });
 
-    return response.data.content?.html_url || '';
+  return response.data.content?.html_url || '';
 }
 
 // --- Manejadores del Bot ---
@@ -96,8 +96,8 @@ bot.on('text', async (ctx) => {
   const topic = ctx.message.text;
   topicCache.set(ctx.from.id, topic);
   await ctx.reply(`Tema: "${topic}".\n¿Qué quieres hacer?`, Markup.inlineKeyboard([
-      Markup.button.callback('📝 Crear Post', 'create_post'),
-      Markup.button.callback('📦 Crear Contenido (Pronto)', 'create_content'),
+    Markup.button.callback('📝 Crear Post', 'create_post'),
+    Markup.button.callback('📦 Crear Contenido (Pronto)', 'create_content'),
   ]));
 });
 
@@ -105,9 +105,9 @@ bot.action('create_post', async (ctx) => {
   const userId = ctx.from.id;
   const topic = topicCache.get(userId);
   if (!topic) return ctx.answerCbQuery('No encontré un tema. Por favor, envíalo de nuevo.');
-  
+
   await ctx.editMessageText(`📝 Entendido. Generando post sobre "${topic}"...`);
-  
+
   try {
     const generatedMarkdown = await generatePost(topic);
     await ctx.reply('✅ Contenido generado. Publicando en GitHub...');
