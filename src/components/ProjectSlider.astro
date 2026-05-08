@@ -20,21 +20,21 @@ const allProjects = [...projects, ...projects];
                     href={project.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="block w-80 p-6 rounded-xl bg-gray-leather/50 border border-white/5 hover:border-cyan-electric/50 transition-all duration-300 hover:scale-[1.02] hover:bg-gray-leather group"
+                    class="block w-80 p-6 rounded-xl bg-white shadow-sm border border-black/5 hover:border-brand-primary/50 transition-all duration-300 hover:scale-[1.02] hover:bg-bg-alt hover:shadow-md group"
                 >
                     <div class="flex items-center gap-3 mb-4">
-                        <div class="p-2 rounded bg-black-deep/50 text-cyan-electric">
+                        <div class="p-2 rounded bg-brand-primary/10 text-brand-primary">
                             <i class="devicon-github-original text-2xl" />
                         </div>
-                        <h3 class="font-bold text-lg text-white group-hover:text-cyan-electric transition-colors truncate">
+                        <h3 class="font-bold text-lg text-text-main group-hover:text-brand-primary transition-colors truncate">
                             {project.title}
                         </h3>
                     </div>
                     <div class="flex items-center gap-2 mt-auto">
-                        <span class="text-xs text-gray-400 uppercase tracking-wider font-medium">
+                        <span class="text-xs text-text-muted uppercase tracking-wider font-medium">
                             Lenguaje:
                         </span>
-                        <span class="text-xs px-2 py-1 bg-black-deep/60 rounded text-orange-fire font-bold">
+                        <span class="text-xs px-2 py-1 bg-brand-accent/10 rounded text-brand-accent font-bold">
                             {project.language}
                         </span>
                     </div>

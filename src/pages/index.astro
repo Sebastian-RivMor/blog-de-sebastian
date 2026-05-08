@@ -9,9 +9,14 @@ import ProjectSlider from "../components/ProjectSlider.astro";
 
 const projects = [
   {
-    title: "Maywa-Textil",
-    language: "PHP",
-    url: "https://github.com/Sebastian-RivMor/Maywa-Textil",
+    title: "automation-system",
+    language: "Python",
+    url: "https://github.com/Sebastian-RivMor/automation-system",
+  },
+  {
+    title: "Job-Market-Analyzer",
+    language: "Python",
+    url: "https://github.com/Sebastian-RivMor/Job-Market-Analyzer",
   },
   {
     title: "Control-de-inventario",
@@ -19,14 +24,9 @@ const projects = [
     url: "https://github.com/Sebastian-RivMor/Control-de-inventario",
   },
   {
-    title: "Tragamonedas_Previa",
-    language: "Python",
-    url: "https://github.com/Sebastian-RivMor/Tragamonedas_Previa",
-  },
-  {
-    title: "Mano-Robot-PY_ARD",
-    language: "Python",
-    url: "https://github.com/Sebastian-RivMor/Mano-Robot-PY_ARD",
+    title: "inventory-saas",
+    language: "Python / React",
+    url: "https://github.com/Sebastian-RivMor/inventory-saas",
   },
 ];
 ---
@@ -40,11 +40,11 @@ const projects = [
       class="min-h-[80vh] flex flex-col justify-center items-center text-center px-4 relative overflow-hidden"
     >
       <div
-        class="absolute inset-0 bg-gradient-to-br from-blue-gloomy/30 to-black-deep -z-10"
+        class="absolute inset-0 bg-gradient-to-br from-bg-alt to-bg-main -z-10"
       >
       </div>
       <div
-        class="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-cyan-electric shadow-[0_0_20px_rgba(0,210,225,0.3)] mb-8"
+        class="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-brand-primary shadow-[0_0_20px_rgba(15,118,110,0.3)] mb-8"
       >
         <img
           src="/images/perfil.webp"
@@ -54,13 +54,13 @@ const projects = [
       </div>
       <h1 class="text-5xl md:text-7xl font-bold mb-4 tracking-tight">
         <span
-          class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-electric to-orange-fire"
+          class="bg-clip-text text-transparent bg-gradient-to-r from-brand-primary to-brand-secondary"
         >
           Sebastian Rivera
         </span>
       </h1>
       <div
-        class="text-xl md:text-2xl text-gray-400 max-w-2xl mb-8 flex space-x-6"
+        class="text-xl md:text-2xl text-text-muted max-w-2xl mb-8 flex space-x-6"
       >
         <a
           href="https://github.com/Sebastian-RivMor"
@@ -95,7 +95,7 @@ const projects = [
         </a>
 
         <a
-          href="#"
+          href="https://www.instagram.com/_sebasriv/"
           target="_blank"
           class="group flex items-center justify-center w-14 h-14 bg-white rounded-full shadow-lg transition-all duration-300 hover:bg-gradient-to-tr hover:from-yellow-400 hover:via-red-500 hover:to-purple-500 hover:-translate-y-1"
         >
@@ -113,13 +113,13 @@ const projects = [
       <div class="flex gap-4">
         <a
           href="#projects"
-          class="px-8 py-3 bg-cyan-electric text-black-deep font-bold rounded-full hover:bg-white transition-colors duration-300"
+          class="px-8 py-3 bg-brand-primary text-white font-bold rounded-full hover:bg-brand-secondary transition-colors duration-300"
         >
           Ver Proyectos
         </a>
         <a
           href="/blog"
-          class="px-8 py-3 border border-orange-fire text-orange-fire font-bold rounded-full hover:bg-orange-fire hover:text-white transition-colors duration-300"
+          class="px-8 py-3 border border-brand-accent text-brand-accent font-bold rounded-full hover:bg-brand-accent hover:text-white transition-colors duration-300"
         >
           Leer Blog
         </a>
@@ -127,10 +127,10 @@ const projects = [
     </section>
 
     <!-- About Section -->
-    <section class="py-20 px-8 bg-gray-leather/30">
+    <section class="py-20 px-8 bg-bg-alt">
       <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-3xl md:text-4xl font-bold mb-8 text-white">Sobre Mí</h2>
-        <p class="text-gray-300 text-lg leading-relaxed mb-8">
+        <h2 class="text-3xl md:text-4xl font-bold mb-8 text-text-main">Sobre Mí</h2>
+        <p class="text-text-muted text-lg leading-relaxed mb-8">
           Soy estudiante de la carrera Ingeniería de Sistemas Computacionales,
           me considero una persona que le gusta aprender de manera autodidacta,
           me gusta el trabajo en equipo de una forma interactiva, siempre
@@ -140,64 +140,78 @@ const projects = [
     </section>
 
     <!-- Skills Section -->
-    <section class="py-20 px-8 bg-black-deep relative">
+    <section class="py-20 px-8 bg-bg-main relative">
       <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center text-white">
+        <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center text-text-main">
           Tecnologías & Skills
         </h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <!-- Languages -->
-          <SkillCategory title="Lenguajes">
-            <SkillItem
-              name="JavaScript"
-              iconClass="devicon-javascript-plain"
-              color="#F7DF1E"
-            />
+          <!-- Data Science & AI -->
+          <SkillCategory title="Data Science & AI">
             <SkillItem
               name="Python"
               iconClass="devicon-python-plain"
               color="#3776AB"
             />
             <SkillItem
-              name="PHP"
-              iconClass="devicon-php-plain"
-              color="#777BB4"
+              name="Pandas"
+              iconClass="devicon-pandas-plain"
+              color="#150458"
             />
             <SkillItem
-              name="Java"
-              iconClass="devicon-java-plain"
-              color="#007396"
+              name="NumPy"
+              iconClass="devicon-numpy-plain"
+              color="#013243"
             />
-            <SkillItem
-              name="SQL"
-              iconClass="devicon-mysql-plain"
-              color="#4479A1"
-            />
+            <div
+              class="flex flex-col items-center gap-2 group p-4 rounded-lg hover:bg-black/5 transition-all duration-300"
+            >
+              <span class="text-4xl">🧠</span>
+              <span
+                class="text-sm font-medium text-text-muted group-hover:text-text-main transition-colors text-center"
+                >AI</span
+              >
+            </div>
           </SkillCategory>
 
-          <!-- Libraries/Frameworks -->
-          <SkillCategory title="Librerías & Frameworks">
+          <!-- Automation & BI -->
+          <SkillCategory title="Data & Automatización">
+            <div
+              class="flex flex-col items-center gap-2 group p-4 rounded-lg hover:bg-black/5 transition-all duration-300"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 121.3 512.1 269.6"><path d="M458.1 229.1c-25.1 0-46.2-17.2-52.2-40.4h-61.8c-13.2 0-24.4 9.5-26.6 22.5l-2.2 13.3c-2 12.2-8.2 23.4-17.5 31.6 9.3 8.2 15.5 19.3 17.5 31.6l2.2 13.3c2.2 13 13.4 22.5 26.6 22.5h7.9c6-23.2 27.1-40.4 52.2-40.4 29.8 0 53.9 24.1 53.9 53.9s-24.1 53.9-53.9 53.9c-25.1 0-46.2-17.2-52.2-40.4h-7.9c-26.3 0-48.8-19-53.2-45l-2.2-13.3c-2.2-13-13.4-22.5-26.6-22.5h-21.4c-6 23.2-27.1 40.4-52.2 40.4s-46.2-17.2-52.2-40.4H106c-6 23.2-27.1 40.4-52.2 40.4C24.1 309.9 0 285.8 0 256s24.1-53.9 53.9-53.9c25.1 0 46.2 17.2 52.2 40.4h30.3c6-23.2 27.1-40.4 52.2-40.4s46.2 17.2 52.2 40.4h21.4c13.2 0 24.4-9.5 26.6-22.5l2.2-13.3c4.3-26 26.8-45 53.2-45H406c6-23.2 27.1-40.4 52.2-40.4 29.8 0 53.9 24.1 53.9 53.9s-24.2 53.9-54 53.9m0-27c14.9 0 26.9-12.1 26.9-26.9s-12.1-26.9-26.9-26.9-26.9 12.1-26.9 26.9 12 26.9 26.9 26.9M53.9 282.9c14.9 0 26.9-12.1 26.9-26.9s-12.1-26.9-26.9-26.9-27 12-27 26.9 12.1 26.9 27 26.9M215.6 256c0 14.9-12.1 26.9-26.9 26.9s-26.9-12.1-26.9-26.9 12.1-26.9 26.9-26.9 26.9 12 26.9 26.9m215.6 80.8c0 14.9-12.1 26.9-26.9 26.9-14.9 0-26.9-12.1-26.9-26.9s12.1-26.9 26.9-26.9 26.9 12.1 26.9 26.9" style="fill-rule:evenodd;clip-rule:evenodd;fill:#ea4b71"/></svg>
+              <span
+                class="text-sm font-medium text-text-muted group-hover:text-text-main transition-colors text-center"
+                >n8n</span
+              >
+            </div>
+            <div
+              class="flex flex-col items-center gap-2 group p-4 rounded-lg hover:bg-black/5 transition-all duration-300"
+            >
+              <span class="text-4xl"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="60" height="40" viewBox="0 0 48 48">
+<path fill="#eda503" d="M38,44H26c-0.552,0-1-0.448-1-1V5c0-0.552,0.448-1,1-1h12c0.552,0,1,0.448,1,1v38	C39,43.552,38.552,44,38,44z"></path><path fill="#ffca28" d="M30,44H18c-0.552,0-1-0.448-1-1V15c0-0.552,0.448-1,1-1h12c0.552,0,1,0.448,1,1v28	C31,43.552,30.552,44,30,44z"></path><path fill="#ffe082" d="M22,44H10c-0.552,0-1-0.448-1-1V25c0-0.552,0.448-1,1-1h12c0.552,0,1,0.448,1,1v18	C23,43.552,22.552,44,22,44z"></path>
+</svg></span>
+              
+              <span
+                class="text-sm font-medium text-text-muted group-hover:text-text-main transition-colors text-center"
+                >Power BI</span
+              >
+            </div>
             <SkillItem
-              name="Angular"
-              iconClass="devicon-angularjs-plain"
-              color="#DD0031"
+              name="SQL"
+              iconClass="devicon-azuresqldatabase-plain colored"
+              color="#4479A1"
             />
-            <SkillItem
-              name="React"
-              iconClass="devicon-react-original"
-              color="#61DAFB"
-            />
-            <SkillItem
-              name="Astro"
-              iconClass="devicon-astro-plain"
-              color="#BC52EE"
-            />
-            <SkillItem
-              name="Tailwind"
-              iconClass="devicon-tailwindcss-plain"
-              color="#06B6D4"
-            />
+            <div
+              class="flex flex-col items-center gap-2 group p-4 rounded-lg hover:bg-black/5 transition-all duration-300"
+            >
+              <span class="text-4xl">🤖</span>
+              <span
+                class="text-sm font-medium text-text-muted group-hover:text-text-main transition-colors text-center"
+                >Automation</span
+              >
+            </div>
           </SkillCategory>
 
           <!-- Tools -->
@@ -215,7 +229,7 @@ const projects = [
             <SkillItem
               name="GitHub"
               iconClass="devicon-github-original"
-              color="#ffffff"
+              color="#181717"
             />
             <SkillItem
               name="VS Code"
@@ -225,57 +239,36 @@ const projects = [
           </SkillCategory>
 
           <!-- Extra -->
-          <SkillCategory title="Extra">
-            <!-- Using generic icons/classes for concepts usually represented by other symbols -->
-            <!-- Automation (Robot) -->
-            <div
-              class="flex flex-col items-center gap-2 group p-4 rounded-lg hover:bg-white/5 transition-all duration-300"
-            >
-              <span class="text-4xl">🤖</span>
-              <span
-                class="text-sm font-medium text-gray-400 group-hover:text-white transition-colors text-center"
-                >Automation</span
-              >
-            </div>
-            <!-- AI (Brain) -->
-            <div
-              class="flex flex-col items-center gap-2 group p-4 rounded-lg hover:bg-white/5 transition-all duration-300"
-            >
-              <span class="text-4xl">🧠</span>
-              <span
-                class="text-sm font-medium text-gray-400 group-hover:text-white transition-colors text-center"
-                >AI</span
-              >
-            </div>
-            <!-- Agile (Cycle) -->
-            <div
-              class="flex flex-col items-center gap-2 group p-4 rounded-lg hover:bg-white/5 transition-all duration-300"
-            >
-              <span class="text-4xl">🔄</span>
-              <span
-                class="text-sm font-medium text-gray-400 group-hover:text-white transition-colors text-center"
-                >Agile</span
-              >
-            </div>
-            <!-- n8n (Custom logic/workflow) -->
-            <div
-              class="flex flex-col items-center gap-2 group p-4 rounded-lg hover:bg-white/5 transition-all duration-300"
-            >
-              <span class="text-4xl text-[#FF6D5A] font-bold">n8n</span>
-              <span
-                class="text-sm font-medium text-gray-400 group-hover:text-white transition-colors text-center"
-                >n8n</span
-              >
-            </div>
+          <SkillCategory title="Extra: Web Dev">
+            <SkillItem
+              name="JavaScript"
+              iconClass="devicon-javascript-plain"
+              color="#F7DF1E"
+            />
+            <SkillItem
+              name="React"
+              iconClass="devicon-react-original"
+              color="#61DAFB"
+            />
+            <SkillItem
+              name="Astro"
+              iconClass="devicon-astro-plain"
+              color="#BC52EE"
+            />
+            <SkillItem
+              name="Tailwind"
+              iconClass="devicon-tailwindcss-plain"
+              color="#06B6D4"
+            />
           </SkillCategory>
         </div>
       </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-20 bg-gray-leather/30 overflow-hidden">
+    <section id="projects" class="py-20 bg-bg-alt overflow-hidden">
       <div class="max-w-[100vw]">
-        <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-white">
+        <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-text-main">
           Proyectos Realizados
         </h2>
         <ProjectSlider projects={projects} />

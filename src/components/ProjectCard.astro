@@ -9,20 +9,20 @@ interface Props {
 const { title, description, tags = [], image } = Astro.props;
 ---
 
-<article class="bg-gray-leather rounded-xl overflow-hidden hover:transform hover:scale-[1.02] transition-all duration-300 shadow-lg group">
+<article class="bg-bg-alt rounded-xl overflow-hidden hover:transform hover:scale-[1.02] transition-all duration-300 shadow-lg group">
   {image && (
     <div class="h-48 overflow-hidden">
       <img src={image} alt={title} class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
     </div>
   )}
   <div class="p-6">
-    <h3 class="text-xl font-bold mb-2 text-white group-hover:text-cyan-electric transition-colors">{title}</h3>
-    <p class="text-gray-300 mb-4 text-sm leading-relaxed">
+    <h3 class="text-xl font-bold mb-2 text-text-main group-hover:text-brand-primary transition-colors">{title}</h3>
+    <p class="text-text-muted mb-4 text-sm leading-relaxed">
       {description}
     </p>
     <div class="flex flex-wrap gap-2 mt-auto">
       {tags.map((tag) => (
-        <span class="text-xs px-2 py-1 bg-black-deep rounded text-cyan-electric">{tag}</span>
+        <span class="text-xs px-2 py-1 bg-brand-primary/10 rounded text-brand-primary">{tag}</span>
       ))}
     </div>
   </div>

@@ -14,26 +14,26 @@ const posts = (await getCollection('blog')).sort(
 	
 	<main class="flex-grow pt-20 px-8 min-h-screen">
 		<div class="max-w-4xl mx-auto">
-			<h1 class="text-4xl md:text-5xl font-bold mb-4 text-white">Blog</h1>
-			<p class="text-gray-400 mb-12 text-lg">Pensamientos, tutoriales y actualizaciones.</p>
+			<h1 class="text-4xl md:text-5xl font-bold mb-4 text-text-main">Blog</h1>
+			<p class="text-text-muted mb-12 text-lg">Pensamientos, tutoriales y actualizaciones.</p>
 
 			<div class="grid gap-8">
 				{posts.map(post => (
-					<article class="p-8 rounded-2xl bg-gray-leather border border-gray-700/50 hover:border-cyan-electric/50 transition-all duration-300 group">
-						<span class="text-sm text-cyan-electric mb-2 block">
+					<article class="p-8 rounded-2xl bg-bg-alt shadow-sm border border-black/10 hover:border-brand-primary/50 transition-all duration-300 group">
+						<span class="text-sm text-brand-primary mb-2 block">
 							{post.data.pubDate.toLocaleDateString('es-ES', {
 								year: 'numeric',
 								month: 'long',
 								day: 'numeric',
 							})}
 						</span>
-						<h2 class="text-2xl font-bold mb-3 text-white group-hover:text-cyan-electric transition-colors">
+						<h2 class="text-2xl font-bold mb-3 text-text-main group-hover:text-brand-primary transition-colors">
 							<a href={`/blog/${post.id}`} class="block">
 								{post.data.title}
 							</a>
 						</h2>
-						<p class="text-gray-400 leading-relaxed mb-4">{post.data.description}</p>
-						<a href={`/blog/${post.id}`} class="text-orange-fire font-medium hover:text-white transition-colors inline-flex items-center gap-1">
+						<p class="text-text-muted leading-relaxed mb-4">{post.data.description}</p>
+						<a href={`/blog/${post.id}`} class="text-brand-accent font-medium hover:text-brand-primary transition-colors inline-flex items-center gap-1">
 							Leer más 
 							<span class="text-xl">→</span>
 						</a>
@@ -41,8 +41,8 @@ const posts = (await getCollection('blog')).sort(
 				))}
 			</div>
 
-            <div class="mt-16 p-8 rounded-2xl bg-blue-gloomy/20 border border-blue-gloomy border-dashed text-center">
-                <p class="text-gray-400">Próximamente: Integración con Telegram para nuevo contenido.</p>
+            <div class="mt-16 p-8 rounded-2xl bg-brand-primary/5 border border-brand-primary/30 border-dashed text-center">
+                <p class="text-text-muted">Próximamente: Integración con Telegram para nuevo contenido.</p>
             </div>
 		</div>
 	</main>
